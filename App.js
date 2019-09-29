@@ -1,19 +1,62 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Button from './src/components/Button'
+import Display from './src/components/Display'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+
+export default class App extends Component {
+
+  state = {
+    displayValue: '0'
+  }
+
+  addDigit = n => {
+    this.setState({ diplayValue: n })
+  }
+
+  clearMemory = () => {
+    this.setState({ displayValue: '0' })
+  }
+
+  setOperation = operation => {
+
+  }
+
+  render(){
+    return (
+      <View style={styles.container}>
+        <Display value={this.state.displayValue} />
+        <View style={styles.buttons}>
+          <Button label='AC' triple onClick={this.clearMemory} />
+          <Button label='' />
+          <Button label='' />
+          <Button label='/' />
+          <Button label='7' />
+          <Button label='8' />
+          <Button label='9' />
+          <Button label='*' />
+          <Button label='4' />
+          <Button label='5' />
+          <Button label='6' />
+          <Button label='-' />
+          <Button label='1' />
+          <Button label='2' />
+          <Button label='3' />
+          <Button label='+' />
+          <Button label='0' />
+        </View>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: 0,
   },
+  buttons: {
+    flexDirection: 'row',
+    flexWrap: 'wrap' ,
+  }
 });
